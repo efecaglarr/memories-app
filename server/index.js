@@ -11,10 +11,13 @@ dotenv.config();
 
 app.use(bodyParser.json({ limit: '30mb', extended: true }))
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
-app.use(cors());
- /* The CORS mechanism supports secure cross-origin requests and data 
-transfers between browsers and servers. Browsers use CORS in APIs such as fetch() or 
-XMLHttpRequest to mitigate the risks of cross-origin HTTP requests. */
+app.use(cors(
+  {
+    origin: ["https://deploy.mern..."],
+    methods: ["POST", "GET"],
+    credentials: "true"
+  }
+));
 
 app.use('/posts', postRoutes); // For http://local.host:4444/posts
 
