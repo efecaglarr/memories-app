@@ -1,7 +1,7 @@
 import axios from 'axios' /** It is a JavaScript library that allows us
 to easily perform HTTP operations in client side applications. */
 
-const url = 'memories-app-api.vercel.app'
+const url = 'https://memories-app-api.vercel.app'
 
 export const fetchPosts = () => axios.get(url); 
 export const createPost = (newPost) => axios.post(url, newPost); 
