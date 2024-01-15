@@ -11,14 +11,14 @@ dotenv.config();
 
 app.use(bodyParser.json({ limit: '30mb', extended: true }))
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://memories-app-frontend-psi.vercel.app', 'https://exquisite-marigold-70c3eb.netlify.app/'],
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  optionsSuccessStatus: 204,
+  allowedHeaders: 'Content-Type, Authorization',
+}));
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://memories-app-pclg.onrender.com');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
-  next();
-});
 
 app.use('/posts', postRoutes); // For http://local.host:4444/posts
 
@@ -26,7 +26,7 @@ app.get('/', (req,res) => {
   res.send('Hello to Memories API');
 })
 
-const PORT = process.env.PORT || 4444;
+const PORT = process.env.PORT;
 
 app.use((req, res) => {
   res.status(404).send('Not Found');
