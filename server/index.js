@@ -12,12 +12,16 @@ dotenv.config();
 app.use(bodyParser.json({ limit: '30mb', extended: true }))
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://memories-app-frontend-psi.vercel.app', 'https://exquisite-marigold-70c3eb.netlify.app'],
+  origin: '*',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
-  optionsSuccessStatus: 204,
-  allowedHeaders: 'Content-Type, Authorization',
 }));
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  next();
+})
 
 
 app.use('/posts', postRoutes); // For http://local.host:4444/posts
