@@ -12,7 +12,7 @@ dotenv.config();
 app.use(bodyParser.json({ limit: '30mb', extended: true }))
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://memories-app-frontend-psi.vercel.app', 'https://exquisite-marigold-70c3eb.netlify.app/'],
+  origin: ['http://localhost:3000', 'https://memories-app-frontend-psi.vercel.app', 'https://exquisite-marigold-70c3eb.netlify.app'],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
   optionsSuccessStatus: 204,
