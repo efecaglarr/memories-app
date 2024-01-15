@@ -1,5 +1,4 @@
 import express from 'express';
-import PostMessage from '../models/postMessage.js';
 import { getPosts, createPost, updatePost, deletePost, likePost } from '../controllers/posts.js';
 
 const router = express.Router();

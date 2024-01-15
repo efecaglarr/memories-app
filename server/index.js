@@ -11,13 +11,10 @@ dotenv.config();
 
 app.use(bodyParser.json({ limit: '30mb', extended: true }))
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
-app.use(cors(
-  {
-    origin: ["https://memories-app-api.vercel.app"],
-    methods: ["POST", "GET"],
+app.use(cors({
+    origin: 'https://memories-app-pclg.onrender.com/',
     credentials: "true"
-  }
-));
+}));
 
 app.use('/posts', postRoutes); // For http://local.host:4444/posts
 
