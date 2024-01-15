@@ -12,7 +12,7 @@ dotenv.config();
 app.use(bodyParser.json({ limit: '30mb', extended: true }))
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors({
-    origin: 'https://memories-app-pclg.onrender.com/',
+    origin: 'https://65a48c1c1e52d9e10446bfb8--exquisite-marigold-70c3eb.netlify.app/',
     credentials: "true"
 }));
 
