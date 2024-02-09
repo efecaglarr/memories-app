@@ -14,6 +14,7 @@ const postsReducer = (posts = [], action) => {
         case DELETE:
             console.log('Delete received from delete button');
             return posts.filter((post) => post._id !== action.payload);
+
         default:
             return posts;
     }
