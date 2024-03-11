@@ -11,4 +11,11 @@ export default makeStyles((theme) => ({
   actionDiv: {
     textAlign: 'center',
   },
+  loading: {
+    alignContent: 'center',
+    justifyContent: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
 }));

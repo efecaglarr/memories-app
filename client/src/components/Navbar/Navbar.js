@@ -7,7 +7,8 @@ import { AppBar, Toolbar, Typography, Avatar, Button } from "@material-ui/core";
 import { jwtDecode } from "jwt-decode";
 
 import useStyles from "./styles";
-import memories from "../../images/memories.png";
+import memoriesText from "../../images/memoriesText.png";
+import memoriesLogo from "../../images/memoriesLogo.png";
 
 const Navbar = () => {
   const classes = useStyles();
@@ -26,35 +27,41 @@ const Navbar = () => {
 
   useEffect(() => {
     const token = user?.token;
-
+  
     if (token) {
       const decodedToken = jwtDecode(token);
-
-      if (decodedToken.exp * 1000 < new Date().getTime) logout();
+  
+      // Tokenin son kullanma tarihi geçmişse
+      if (decodedToken.exp * 1000 < new Date().getTime()) {
+        // Kullanıcıyı logout et
+        logout();
+      }
     }
-
+  
+    // useEffect'te localStorage'dan kullanıcı profili ayarlanırken koşula dahil edilmeli
     setUser(JSON.parse(localStorage.getItem("profile")));
-  }, [location]);
+  }, [location]); // Eğer location değişirse useEffect yeniden çalışır
+  
 
   return (
     <AppBar className={classes.appBar} position="static" color="inherit">
-      <div className={classes.brandContainer}>
-        <Typography
-          component={Link}
-          to="/ "
-          className={classes.heading}
-          variant="h2"
-          align="center"
-        >
-          Memories
-        </Typography>
-        <img
+
+      <Link to={'/'} className={classes.brandContainer}>
+      <img
           className={classes.image}
-          src={memories}
+          src={memoriesText}
           alt="memories"
           height="60"
-        ></img>
-      </div>
+        />
+        <img
+          className={classes.image}
+          src={memoriesLogo}
+          alt="memories"
+          height="60"
+        />
+      </Link>
+
+
       <Toolbar className={classes.toolbar}>
         {user ? (
           <div className={classes.profile}>

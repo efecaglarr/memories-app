@@ -121,7 +121,7 @@ const Auth = () => {
           <GoogleLogin
             render={(renderProps) => (
               <Button className={classes.googleButton} color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant="contained">
-                Google Sign In
+                  {isSignUp ? "Google Sign Up" : "Google Sign In"}
               </Button>
             )}
             onSuccess={googleSuccess}
